@@ -42,6 +42,11 @@ public class ContactService {
     }
 
     //Remove products
+    public ResponseEntity<ModelResponse> remover(String codigo) {
+        cr.deleteById(codigo);
+        mr.setMensagem("Contato removido com sucesso! ");
+        return new ResponseEntity<ModelResponse>(mr, HttpStatus.OK);
+    }
 
 
 

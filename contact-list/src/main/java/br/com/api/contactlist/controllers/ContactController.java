@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
+
 @RestController
 public class ContactController {
 
@@ -28,7 +29,12 @@ public class ContactController {
     
     @RequestMapping(path = "/cadastrar", method=RequestMethod.POST)
     public ResponseEntity<?> cadastrar(@RequestBody ContactModel cm) {
-        return cs.cadastrar(cm);
+        return cs.cadastrarAlterar(cm, "cadastrar");
+    }
+    
+    @RequestMapping(path = "/alterar", method=RequestMethod.PUT)
+    public ResponseEntity<?> alterar(@RequestBody ContactModel cm) {
+        return cs.cadastrarAlterar(cm, "alterar");
     }
     
     

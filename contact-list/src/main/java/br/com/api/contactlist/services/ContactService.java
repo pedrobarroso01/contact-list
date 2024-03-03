@@ -22,4 +22,19 @@ public class ContactService {
         return cr.findAll();
     }
 
+    public ResponseEntity<?> cadastrar(ContactModel cm){
+        if (cm.getFirstname() == ""  || cm.getLastname() == "") {
+            mr.setMensagem("Por favor, digite um nome completo!");
+            return new ResponseEntity<ModelResponse>(mr,HttpStatus.BAD_REQUEST);
+        }
+        else if (cm.getPhone() == "") {
+            mr.setMensagem("Por favor, digite um número válido!");
+            return new ResponseEntity<ModelResponse>(mr,HttpStatus.BAD_REQUEST);
+        }else {
+            return new ResponseEntity<ContactModel>(cr.save(cm),HttpStatus.CREATED);
+        }
+    }
+
 }
+
+    

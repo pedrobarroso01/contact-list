@@ -26,6 +26,10 @@ public class ContactController {
         return cs.listar();
     }
     
+    @RequestMapping(path = "/cadastrar", method=RequestMethod.POST)
+    public ResponseEntity<?> cadastrar(@RequestBody ContactModel cm) {
+        return cs.cadastrar(cm);
+    }
     
     
 

@@ -22,23 +22,23 @@ public class ContactController {
     @Autowired
     private ContactService cs;
 
-    @RequestMapping(path = "/listar", method=RequestMethod.GET)
+    @RequestMapping(path = "/list", method=RequestMethod.GET)
     public Iterable<ContactModel> listar() {
         return cs.listar();
     }
     
-    @RequestMapping(path = "/cadastrar", method=RequestMethod.POST)
+    @RequestMapping(path = "/create", method=RequestMethod.POST)
     public ResponseEntity<?> cadastrar(@RequestBody ContactModel cm) {
         return cs.cadastrarAlterar(cm, "cadastrar");
     }
     
-    @RequestMapping(path = "/alterar", method=RequestMethod.PUT)
+    @RequestMapping(path = "/alter", method=RequestMethod.PUT)
     public ResponseEntity<?> alterar(@RequestBody ContactModel cm) {
         return cs.cadastrarAlterar(cm, "alterar");
     }
     
-    @RequestMapping(path = "/remover", method=RequestMethod.DELETE)
-    public ResponseEntity<ModelResponse> excluir(@RequestParam(name = "id")String codigo) {
+    @RequestMapping(path = "/remove", method=RequestMethod.DELETE)
+    public ResponseEntity<ModelResponse> excluir(@RequestParam(name = "id")Long codigo) {
         return cs.remover(codigo);
     }
     

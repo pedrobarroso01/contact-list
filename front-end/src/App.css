@@ -1,0 +1,25 @@
+form {
+  width: 500px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.content {
+  background-color: rgb(52, 52, 211);
+  position: absolute;
+  width: 60%;
+  left:20%;
+  height: 100%;
+  border-radius: 2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+input {
+  margin-bottom: 5px;
+}
+
+form input[type='button'] {
+  margin-right: 10px;
+}
+

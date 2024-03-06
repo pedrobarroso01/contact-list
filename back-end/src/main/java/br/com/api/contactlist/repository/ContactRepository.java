@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.api.contactlist.models.ContactModel;
 
 @Repository
-public interface ContactRepository extends CrudRepository<ContactModel, String>{
+public interface ContactRepository extends CrudRepository<ContactModel, Long>{
 
 }

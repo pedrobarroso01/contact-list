@@ -15,10 +15,9 @@ import lombok.Setter;
 public class ContactModel {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstname;
     private String lastname;
     private String phone;
-    
 }

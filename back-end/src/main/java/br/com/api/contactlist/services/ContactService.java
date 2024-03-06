@@ -22,7 +22,7 @@ public class ContactService {
         return cr.findAll();
     }
 
-    //Register and alter contacts
+    //Create and alter contacts
     public ResponseEntity<?> cadastrarAlterar(ContactModel cm, String action){
         if (cm.getFirstname() == ""  || cm.getLastname() == "") {
             mr.setMensagem("Por favor, digite um nome completo!");
@@ -31,18 +31,28 @@ public class ContactService {
         else if (cm.getPhone() == "") {
             mr.setMensagem("Por favor, digite um número válido!");
             return new ResponseEntity<ModelResponse>(mr,HttpStatus.BAD_REQUEST);
-        }else {
+        } else {
             if (action == "cadastrar"){
             return new ResponseEntity<ContactModel>(cr.save(cm),HttpStatus.CREATED);
             }
-            else {
+            else if (action == "alterar") {
                 return new ResponseEntity<ContactModel>(cr.save(cm),HttpStatus.OK);
             }
+            else {
+                mr.setMensagem("Ocorreu um erro na solicitação");
+                return new ResponseEntity<ModelResponse>(mr,HttpStatus.BAD_REQUEST);
+            }
+
         }
     }
 
     //Remove products
-    public ResponseEntity<ModelResponse> remover(String codigo) {
+    @SuppressWarnings("null")
+    public ResponseEntity<ModelResponse> remover(Long codigo) {
+        if (!cr.existsById(codigo)) {
+            mr.setMensagem("Favor passar um contato válido");
+            return new ResponseEntity<ModelResponse>(mr,HttpStatus.BAD_REQUEST);
+        }
         cr.deleteById(codigo);
         mr.setMensagem("Contato removido com sucesso! ");
         return new ResponseEntity<ModelResponse>(mr, HttpStatus.OK);
